@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.HashMap;
 
@@ -27,8 +28,9 @@ public class BlankFragment extends Fragment {
     static
     {
         readingTypeMap = new HashMap<String,String>();
-        readingTypeMap.put("oximter","Oximeter Reading");
+        readingTypeMap.put("oximeter","Oximeter Reading");
         readingTypeMap.put("weight","Weight Reading");
+        readingTypeMap.put("bp", "Blood Pressure");
         readingTypeMap.put("thermometer","Thermometer Reading");
     }
     // TODO: Rename and change types of parameters
@@ -69,7 +71,10 @@ public class BlankFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank, container, false);
+        View view = inflater.inflate(R.layout.fragment_blank, container, false);
+        TextView title = (TextView) view.findViewById(R.id.reading_title);
+        title.setText(readingTypeMap.get(readingType));
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
