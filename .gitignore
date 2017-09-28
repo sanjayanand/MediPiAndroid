@@ -1,0 +1,6 @@
+.gradle/
+.idea/
+MediPi.iml
+app/app.iml
+app/build/
+build/
