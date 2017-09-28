@@ -1,101 +1,107 @@
 package com.spinecore.hack.medipiandroid;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 
+import com.spinecore.hack.medipiandroid.CustomAdaptor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link QuestionnaireFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link QuestionnaireFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Demonstrates the use of {@link RecyclerView} with a {@link LinearLayoutManager} and a
+ * {@link GridLayoutManager}.
  */
 public class QuestionnaireFragment extends Fragment {
-    private OnFragmentInteractionListener mListener;
 
-    CustomAdaptor mAdaptor;
-    ViewPager mPager;
+    private static final String TAG = "RecyclerViewFragment";
+    private static final String KEY_LAYOUT_MANAGER = "layoutManager";
+    private static final int SPAN_COUNT = 2;
+    private static final int DATASET_COUNT = 60;
 
-    public QuestionnaireFragment() {
-        // Required empty public constructor
+    private enum LayoutManagerType {
+        GRID_LAYOUT_MANAGER,
+        LINEAR_LAYOUT_MANAGER
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment QuestionnaireFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static QuestionnaireFragment newInstance() {
-        QuestionnaireFragment fragment = new QuestionnaireFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
+    protected LayoutManagerType mCurrentLayoutManagerType;
+
+
+    protected RecyclerView mRecyclerView;
+    protected CustomAdaptor mAdapter;
+    protected RecyclerView.LayoutManager mLayoutManager;
+    protected List<String> mDataset;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
-        mAdaptor = new CustomAdaptor(getActivity().getSupportFragmentManager());
-        mPager  = (ViewPager) getActivity().findViewById(R.id.pager);
-        mPager.setAdapter(mAdaptor);
+
+        // Initialize dataset, this data would usually come from a local content provider or
+        // remote server.
+        initDataset();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_questionnaire, container, false);
-    }
+        View rootView = inflater.inflate(R.layout.fragment_questionnaire, container, false);
+        rootView.setTag(TAG);
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
+        setRecyclerViewLayoutManager();
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+        mAdapter = new CustomAdaptor(mDataset);
+        // Set CustomAdapter as the adapter for RecyclerView.
+        mRecyclerView.setAdapter(mAdapter);
+
+        return rootView;
     }
 
     /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
+     * Set RecyclerView's LayoutManager to the one given.
+     *
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    public void setRecyclerViewLayoutManager() {
+        int scrollPosition = 0;
+        // If a layout manager has already been set, get current scroll position.
+        if (mRecyclerView.getLayoutManager() != null) {
+            scrollPosition = ((LinearLayoutManager) mRecyclerView.getLayoutManager())
+                    .findFirstCompletelyVisibleItemPosition();
+        }
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.scrollToPosition(scrollPosition);
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save currently selected layout manager.
+        savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, mCurrentLayoutManagerType);
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    /**
+     * Generates Strings for RecyclerView's adapter. This data would usually come
+     * from a local content provider or remote server.
+     */
+    private void initDataset() {
+        mDataset = new ArrayList<String>();
+        mDataset.add(getString(R.string.questionnaire_1));
+        mDataset.add(getString(R.string.questionnaire_2));
+        mDataset.add(getString(R.string.questionnaire_3));
+        mDataset.add(getString(R.string.questionnaire_4));
+        mDataset.add(getString(R.string.questionnaire_5));
+        mDataset.add(getString(R.string.questionnaire_6));
+        mDataset.add(getString(R.string.questionnaire_7));
+    }
 }

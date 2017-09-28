@@ -19,8 +19,7 @@ import android.view.MenuItem;
 
 public class LandingActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-                    BlankFragment.OnFragmentInteractionListener,
-                    QuestionnaireFragment.OnFragmentInteractionListener {
+                    BlankFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,14 +111,14 @@ public class LandingActivity extends AppCompatActivity
                 title  = "Blood Pressure";
                 break;
             case R.id.questionnaire:
-                fragment = QuestionnaireFragment.newInstance();
+                fragment = new QuestionnaireFragment();
                 title  = "Questionnaire";
                 break;
         }
 
         if (fragment != null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.content_frame, fragment)
+                    .replace(R.id.content_frame, fragment)
                     .commit();
         }
 
@@ -151,14 +150,14 @@ public class LandingActivity extends AppCompatActivity
                 title  = "Blood Pressure";
                 break;
             case R.id.questionnaire:
-                fragment = QuestionnaireFragment.newInstance();
+                fragment = new QuestionnaireFragment();
                 title  = "Questionnaire";
                 break;
         }
 
         if (fragment != null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.content_frame, fragment)
+                    .replace(R.id.content_frame, fragment)
                     .commit();
         }
 
