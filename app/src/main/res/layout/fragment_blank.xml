@@ -6,43 +6,57 @@
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:id="@+id/reading_form"
-        android:layout_width="365dp"
-        android:layout_height="102dp"
-        android:gravity="center_vertical"
-        android:layout_marginTop="50dp"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="30sp"
+            android:id="@+id/reading_title"
+            android:text="Hello World"
+            android:gravity="center_horizontal"
+            />
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="202dp"
-            android:gravity="right"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/reading_form"
+            android:layout_width="365dp"
+            android:layout_height="102dp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-            <EditText
-                android:id="@+id/reading"
-                android:layout_width="136dp"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="202dp"
+                android:gravity="right"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/reading"
+                    android:layout_width="136dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_reading"
+                    android:imeActionId="@+id/login"
+                    android:imeActionLabel="@string/action_submit_reading_short"
+                    android:imeOptions="actionUnspecified"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/reading_submit_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="73dp"
+                android:gravity="center"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_reading"
-                android:imeActionId="@+id/login"
-                android:imeActionLabel="@string/action_submit_reading_short"
-                android:imeOptions="actionUnspecified"
-                android:maxLines="1"
-                android:singleLine="true" />
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.24"
+                android:text="@string/action_reading_submit"
+                android:textStyle="bold" />
 
-        </android.support.design.widget.TextInputLayout>
-
-        <Button
-            android:id="@+id/reading_submit_button"
-            style="?android:textAppearanceSmall"
-            android:layout_width="73dp"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_weight="0.24"
-            android:text="@string/action_reading_submit"
-            android:textStyle="bold" />
-
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>
