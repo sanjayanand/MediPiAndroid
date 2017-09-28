@@ -5,15 +5,19 @@
     android:layout_height="@dimen/list_item_height"
     android:layout_marginLeft="@dimen/margin_medium"
     android:layout_marginRight="@dimen/margin_medium"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:paddingTop="10dp">
 
     <Switch
         android:id="@+id/questionAnswer"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:checked="false"
-        android:textOn="YES"
-        android:textOff="NO"
+        android:fontFamily="cursive"
         android:gravity="left"
-        android:textSize="20sp"/><!--gravity of the Switch-->
+        android:lineSpacingExtra="8sp"
+        android:textOff="NO"
+        android:textOn="YES"
+        android:textSize="14sp"
+        android:textStyle="bold" /><!--gravity of the Switch-->
 </FrameLayout>
