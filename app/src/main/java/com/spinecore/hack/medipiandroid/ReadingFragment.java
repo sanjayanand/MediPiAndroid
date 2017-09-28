@@ -1,5 +1,6 @@
 package com.spinecore.hack.medipiandroid;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,6 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.spinecore.hack.medipiandroid.domain.MediPiReading;
+import com.spinecore.hack.medipiandroid.store.MediPiStorageUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,14 +20,14 @@ import java.util.List;
  * Demonstrates the use of {@link RecyclerView} with a {@link LinearLayoutManager} and a
  * {@link GridLayoutManager}.
  */
-public class QuestionnaireFragment extends Fragment {
+public class ReadingFragment extends Fragment {
 
     private static final String TAG = "RecyclerViewFragment";
 
     protected RecyclerView mRecyclerView;
-    protected QuestionnaireAdaptor mAdapter;
+    protected ReadingAdaptor mAdapter;
     protected RecyclerView.LayoutManager mLayoutManager;
-    protected List<String> mDataset;
+    protected List<MediPiReading> mDataset;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,14 +39,14 @@ public class QuestionnaireFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_questionnaire, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_reading, container, false);
         rootView.setTag(TAG);
 
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerReadingView);
 
         setRecyclerViewLayoutManager();
 
-        mAdapter = new QuestionnaireAdaptor(mDataset);
+        mAdapter = new ReadingAdaptor(mDataset);
         mRecyclerView.setAdapter(mAdapter);
 
         return rootView;
@@ -75,13 +79,14 @@ public class QuestionnaireFragment extends Fragment {
      * from a local content provider or remote server.
      */
     private void initDataset() {
-        mDataset = new ArrayList<String>();
-        mDataset.add(getString(R.string.questionnaire_1));
-        mDataset.add(getString(R.string.questionnaire_2));
-        mDataset.add(getString(R.string.questionnaire_3));
-        mDataset.add(getString(R.string.questionnaire_4));
-        mDataset.add(getString(R.string.questionnaire_5));
-        mDataset.add(getString(R.string.questionnaire_6));
-        mDataset.add(getString(R.string.questionnaire_7));
+        Context ctx = getActivity();
+        mDataset = new ArrayList<MediPiReading>();
+        mDataset.add(new MediPiReading("Blood Pressure", Float.toString(
+                MediPiStorageUtils.getFloatPreference(ctx,MediPiStorageUtils.BP_READING,120))));
+        mDataset.add(new MediPiReading("Oximeter", Float.toString(
+                MediPiStorageUtils.getFloatPreference(ctx,MediPiStorageUtils.OX_READING,99))));
+        mDataset.add(new MediPiReading("Weight", Float.toString(
+                MediPiStorageUtils.getFloatPreference(ctx,MediPiStorageUtils.WEIGHT_READING,70))));
     }
+
 }

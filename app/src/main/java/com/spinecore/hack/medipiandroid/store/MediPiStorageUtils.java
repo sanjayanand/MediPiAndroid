@@ -7,6 +7,10 @@ import android.text.TextUtils;
 
 public class MediPiStorageUtils {
     public static final String PREFS_NAME = "MediPi";
+    public static final String BP_READING = "bp";
+    public static final String OX_READING = "oximeter";
+    public static final String WEIGHT_READING = "weight";
+
     public static String getStringPreference(Context context, String key,String defaultValue) {
         String value = null;
         SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME,0);

@@ -5,13 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Switch;
-import android.widget.TextView;
 
 import java.util.List;
 /**
  * Provide views to RecyclerView with data from mDataSet.
  */
-public class CustomAdaptor extends RecyclerView.Adapter<CustomAdaptor.ViewHolder> {
+public class QuestionnaireAdaptor extends RecyclerView.Adapter<QuestionnaireAdaptor.ViewHolder> {
     private static final String TAG = "CustomAdapter";
 
     private List<String> mDataSet;
@@ -43,7 +42,7 @@ public class CustomAdaptor extends RecyclerView.Adapter<CustomAdaptor.ViewHolder
      *
      * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
      */
-    public CustomAdaptor(List<String> dataSet) {
+    public QuestionnaireAdaptor(List<String> dataSet) {
         mDataSet = dataSet;
     }
 

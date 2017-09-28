@@ -24,13 +24,10 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_questionnaire">Questionnaire</string>
+    <string name="action_share">Share</string>
 
     <!-- Strings related to Settings -->
 
-    <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
-
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
 
     <string name="questionnaire_1">1. Are you feeling more breathless or coughing more than usual today?</string>
     <string name="questionnaire_2">2. Increase your bronchodilator as advised by your key worker. Is your cough or breathlessness much worse than usual?</string>

@@ -32,14 +32,14 @@ public class LandingActivity extends AppCompatActivity
 
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.info);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.info);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -114,44 +114,9 @@ public class LandingActivity extends AppCompatActivity
                 fragment = new QuestionnaireFragment();
                 title  = "Questionnaire";
                 break;
-        }
-
-        if (fragment != null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_frame, fragment)
-                    .commit();
-        }
-
-        // set the toolbar title
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(title);
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-
-    }
-    public void displayHelp(int viewId) {
-
-        Fragment fragment = null;
-        String title = getString(R.string.app_name);
-
-        switch (viewId) {
-            case R.id.oximeter:
-                fragment = BlankFragment.newInstance("oximeter");
-                title  = "Oximeter";
-                break;
-            case R.id.weight:
-                fragment = BlankFragment.newInstance("weight");
-                title  = "Weight";
-                break;
-            case R.id.bp:
-                fragment = BlankFragment.newInstance("bp");
-                title  = "Blood Pressure";
-                break;
-            case R.id.questionnaire:
-                fragment = new QuestionnaireFragment();
-                title  = "Questionnaire";
+            case R.id.share_reading:
+                fragment = new ReadingFragment();
+                title  = "Share Reading";
                 break;
         }
 
@@ -170,6 +135,7 @@ public class LandingActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
 
     }
+
     @Override
     public void onFragmentInteraction(Uri uri) {
 
