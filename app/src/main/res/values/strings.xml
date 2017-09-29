@@ -37,6 +37,67 @@
     <string name="questionnaire_6">6. Has the amount of sputum increased or become more difficult to clear?</string>
     <string name="questionnaire_7">7. Has your sputum changed colour or thickness since yesterday?</string>
 
+    <string-array name="oximeter_instructions">
+        <item>Instructions for the use of the Nonin 9560 Bluetooth Pulse Oximeter.</item>
+        <item>1. Press start button on MediPi to commence reading.</item>
+        <item>2. Insert finger into Nonin device with nail side up until the fingertip touches the built in stop guide. This switches on the device. For best results, keep device at your heart or chest level.</item>
+        <item>3. Wait until MediPi display shows the measurement has been taken. THIS MAY TAKE SOME TIME (about 30 seconds). The LED display on the Nonin device will flash and MediPi will indicate it is \'Downloading\'</item>
+        <item>4. Remove your finger and press ‘next’/’back’ on MediPi.</item>
+    </string-array>
+    
+    <string-array name="oximeter_instruction_images">
+        <item>someimage1.png</item>
+        <item>someimage2.png</item>
+        <item>someimage3.png</item>
+        <item>someimage4.png</item>
+        <item>someimage5.png</item>
+
+    </string-array>
+
+    <string-array name="weight_instructions">
+        <item>Instructions for the use of the Marsden M430 Bluetooth Scale</item>
+        <item>1. Make sure scales are on solid, level ground then press ‘start’ button on MediPi to commence reading.</item>
+        <item>2. The on-screen message will tell you to turn on the scales if necessary.</item>
+        <item>3. Turn on the Marsden scales and wait until prompted to stand on the scales by MediPi. (The device must be started without any load and the display must read 0.0kg)</item>
+        <item>4. Stand on scales until the scales make a ‘beep’. The screen will show your weight.</item>
+        <item>5. Step off the scales and press ‘next’/’back’ on MediPi.</item>
+        <item>6. The scales should switch themselves off automatically after a short period.</item>
+    </string-array>
+
+    <string-array name="weight_instruction_images">
+        <item>someimage1.png</item>
+        <item>someimage2.png</item>
+        <item>someimage3.png</item>
+        <item>someimage4.png</item>
+        <item>someimage5.png</item>
+        <item>someimage6.png</item>
+        <item>someimage7.png</item>
+    </string-array>
+
+    <string-array name="bp_instructions">
+        <item>SITTING: Instructions for the use of the Omron 708-BT Bluetooth Blood Pressure Meter WHILST SITTING</item>
+        <item>1. Ensure user id slider on the Omron blood pressure meter is set to USER A</item>
+        <item>2. Whilst SITTING, Put cuff on upper arm as directed by your clinician</item>
+        <item>3. Press O/I start button and the cuff will start to inflate automatically</item>
+        <item>4. Once the readings have been taken and are displayed on the screen, remove cuff.</item>
+        <item>5. Press start on MediPi patient device</item>
+        <item>6. Press upload button on Omron blood pressure meter. (If Omron screen is off press either of the memory arrow buttons before pressing upload).</item>
+        <item>7. Your readings will be displayed on the MediPi patient user device</item>
+        <item>8. Press ‘next’/’back’</item>
+    </string-array>
+
+    <string-array name="bp_instruction_images">
+        <item>someimage1.png</item>
+        <item>someimage2.png</item>
+        <item>someimage3.png</item>
+        <item>someimage4.png</item>
+        <item>someimage5.png</item>
+        <item>someimage6.png</item>
+        <item>someimage7.png</item>
+        <item>someimage8.png</item>
+        <item>someimage9.png</item>
+    </string-array>
+
     <string name="element_text">Element</string>
     <string name="grid_layout_manager">Grid Layout Manager</string>
     <string name="linear_layout_manager">Linear Layout Manager</string>

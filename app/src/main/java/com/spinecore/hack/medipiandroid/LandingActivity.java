@@ -28,6 +28,8 @@ public class LandingActivity extends AppCompatActivity
                     BlankFragment.OnFragmentInteractionListener,
                     InstructionFragment.OnFragmentInteractionListener {
 
+    private String reading_type;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,17 +109,20 @@ public class LandingActivity extends AppCompatActivity
 
         switch (viewId) {
             case R.id.oximeter:
-                fragment = BlankFragment.newInstance("oximeter");
+                reading_type="oximeter";
+                fragment = BlankFragment.newInstance(reading_type);
                 title  = "Oximeter";
                 instructions = true;
                 break;
             case R.id.weight:
-                fragment = BlankFragment.newInstance("weight");
+                reading_type="weight";
+                fragment = BlankFragment.newInstance(reading_type);
                 title  = "Weight";
                 instructions = true;
                 break;
             case R.id.bp:
-                fragment = BlankFragment.newInstance("bp");
+                reading_type="bp";
+                fragment = BlankFragment.newInstance(reading_type);
                 title  = "Blood Pressure";
                 instructions = true;
                 break;
@@ -157,6 +162,43 @@ public class LandingActivity extends AppCompatActivity
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    private class CollectionPagerAdapter extends FragmentStatePagerAdapter {
+
+        public CollectionPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            InstructionFragment fragment = InstructionFragment.newInstance();
+            Bundle args = new Bundle();
+            args.putString(InstructionFragment.ARG_READING_TYPE, reading_type);
+            args.putInt(InstructionFragment.ARG_INSTRUCTION_STEP,i);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public int getCount() {
+            if (reading_type == "oximeter") {
+                return getResources().getStringArray(R.array.oximeter_instructions).length;
+
+            }
+            else if (reading_type == "weight"){
+                return getResources().getStringArray(R.array.weight_instructions).length;
+            }
+            else if (reading_type == "bp"){
+                return getResources().getStringArray(R.array.bp_instructions).length;
+            }
+            return 0;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return "OBJECT " + (position + 1);
+        }
     }
 
 }

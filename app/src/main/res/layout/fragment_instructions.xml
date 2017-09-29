@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1.0">
 
     <TextView
+        android:id="@+id/instruction_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/testthing1"/>
+        android:layout_weight="0.5"
+        android:text="Hello there"/>
+    <TextView
+        android:id="@+id/instruction_step"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:text="there world"/>
+
 
 </LinearLayout>

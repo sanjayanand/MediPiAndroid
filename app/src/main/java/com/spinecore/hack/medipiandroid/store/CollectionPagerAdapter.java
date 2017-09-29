@@ -21,7 +21,8 @@ public class CollectionPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int i) {
         InstructionFragment fragment = InstructionFragment.newInstance();
         Bundle args = new Bundle();
-        args.putInt(InstructionFragment.ARG_OBJECT, i+1);
+        args.putString(InstructionFragment.ARG_READING_TYPE, "");
+        args.putInt(InstructionFragment.ARG_INSTRUCTION_STEP,i+1);
         fragment.setArguments(args);
         return fragment;
     }
