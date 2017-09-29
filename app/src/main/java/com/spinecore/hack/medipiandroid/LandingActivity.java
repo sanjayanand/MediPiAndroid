@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,9 +21,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.spinecore.hack.medipiandroid.store.CollectionPagerAdapter;
+
 public class LandingActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-                    BlankFragment.OnFragmentInteractionListener{
+                    BlankFragment.OnFragmentInteractionListener,
+                    InstructionFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,20 +102,24 @@ public class LandingActivity extends AppCompatActivity
     public void displayView(int viewId) {
 
         Fragment fragment = null;
+        boolean instructions = false;
         String title = getString(R.string.app_name);
 
         switch (viewId) {
             case R.id.oximeter:
                 fragment = BlankFragment.newInstance("oximeter");
                 title  = "Oximeter";
+                instructions = true;
                 break;
             case R.id.weight:
                 fragment = BlankFragment.newInstance("weight");
                 title  = "Weight";
+                instructions = true;
                 break;
             case R.id.bp:
                 fragment = BlankFragment.newInstance("bp");
                 title  = "Blood Pressure";
+                instructions = true;
                 break;
             case R.id.questionnaire:
                 fragment = new QuestionnaireFragment();
@@ -121,9 +132,16 @@ public class LandingActivity extends AppCompatActivity
         }
 
         if (fragment != null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_frame, fragment)
-                    .commit();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            CollectionPagerAdapter mCollectionPagerAdapter =
+                    new CollectionPagerAdapter(
+                            getSupportFragmentManager());
+            transaction.replace(R.id.content_frame, fragment);
+            if (instructions) {
+                ViewPager mViewPager = (ViewPager) findViewById(R.id.instruction_pager);
+                mViewPager.setAdapter(mCollectionPagerAdapter);
+            }
+            transaction.commit();
         }
 
         // set the toolbar title
@@ -142,3 +160,4 @@ public class LandingActivity extends AppCompatActivity
     }
 
 }
+

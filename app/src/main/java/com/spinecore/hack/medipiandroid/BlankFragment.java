@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,68 +15,76 @@ import java.util.HashMap;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link BlankFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link BlankFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class BlankFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_READING_TYPE = "readingType";
-    private static final HashMap<String,String> readingTypeMap;
-    static
-    {
-        readingTypeMap = new HashMap<String,String>();
-        readingTypeMap.put("oximeter","Oximeter Reading");
-        readingTypeMap.put("weight","Weight Reading");
-        readingTypeMap.put("bp", "Blood Pressure");
-        readingTypeMap.put("thermometer","Thermometer Reading");
-    }
-    // TODO: Rename and change types of parameters
-    private String readingType;
+         * A simple {@link Fragment} subclass.
+         * Activities that contain this fragment must implement the
+         * {@link BlankFragment.OnFragmentInteractionListener} interface
+         * to handle interaction events.
+         * Use the {@link BlankFragment#newInstance} factory method to
+         * create an instance of this fragment.
+         */
+        public class BlankFragment extends Fragment {
+            // TODO: Rename parameter arguments, choose names that match
+            // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+            private static final String ARG_READING_TYPE = "readingType";
+            private static final HashMap<String,String> readingTypeMap;
+            static
+            {
+                readingTypeMap = new HashMap<String,String>();
+                readingTypeMap.put("oximeter","Oximeter Reading");
+                readingTypeMap.put("weight","Weight Reading");
+                readingTypeMap.put("bp", "Blood Pressure");
+                readingTypeMap.put("thermometer","Thermometer Reading");
+            }
+            // TODO: Rename and change types of parameters
+            private String readingType;
 
-    private OnFragmentInteractionListener mListener;
+            private OnFragmentInteractionListener mListener;
 
-    public BlankFragment() {
-        // Required empty public constructor
-    }
+            public BlankFragment() {
+                // Required empty public constructor
+            }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param readingType Parameter 1.
-     * @return A new instance of fragment BlankFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static BlankFragment newInstance(String readingType) {
-        BlankFragment fragment = new BlankFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_READING_TYPE, readingType);
-        fragment.setArguments(args);
-        return fragment;
-    }
+            /**
+             * Use this factory method to create a new instance of
+             * this fragment using the provided parameters.
+             *
+             * @param readingType Parameter 1.
+             * @return A new instance of fragment BlankFragment.
+             */
+            // TODO: Rename and change types and number of parameters
+            public static BlankFragment newInstance(String readingType) {
+                BlankFragment fragment = new BlankFragment();
+                Bundle args = new Bundle();
+                args.putString(ARG_READING_TYPE, readingType);
+                fragment.setArguments(args);
+                return fragment;
+            }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            readingType = getArguments().getString(ARG_READING_TYPE);
-        }
+            @Override
+            public void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                if (getArguments() != null) {
+                    readingType = getArguments().getString(ARG_READING_TYPE);
+                }
 
-    }
+            }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_blank, container, false);
-        TextView title = (TextView) view.findViewById(R.id.reading_title);
-        title.setText(readingTypeMap.get(readingType));
-        return view;
+            @Override
+            public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                     Bundle savedInstanceState) {
+                // Inflate the layout for this fragment
+                ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_blank, container, false);
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+
+                //Fragment instruction = new InstructionFragment();
+                //ft.add(R.id.instruction_fragment, instruction);
+                //ft.commit();
+
+                //View view = inflater.inflate(R.layout.fragment_blank, container, false);
+                TextView title = (TextView) view.findViewById(R.id.reading_title);
+                title.setText(readingTypeMap.get(readingType));
+                return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

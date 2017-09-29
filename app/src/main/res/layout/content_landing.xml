@@ -8,7 +8,22 @@
     tools:context="com.spinecore.hack.medipiandroid.LandingActivity"
     tools:showIn="@layout/app_bar_landing">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" android:id="@+id/content_frame"/>
+        android:layout_height="match_parent"
+        android:weightSum="1.0">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:id="@+id/content_frame"
+            />
+        <android.support.v4.view.ViewPager
+            android:id="@+id/instruction_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:layout_below="@+id/content_frame"
+            />
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
