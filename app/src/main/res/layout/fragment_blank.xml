@@ -56,6 +56,37 @@
                 android:text="@string/action_reading_submit"
                 android:textStyle="bold" />
 
+            <LinearLayout
+                android:layout_width="97dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="0.45">
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/measurement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/device"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

@@ -4,3 +4,4 @@ MediPi.iml
 app/app.iml
 app/build/
 build/
+app/src/main/libs
