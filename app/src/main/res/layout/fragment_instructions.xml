@@ -4,18 +4,17 @@
     android:layout_height="match_parent"
     android:weightSum="1.0">
 
-    <TextView
+    <ImageView
         android:id="@+id/instruction_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        android:text="Hello there"/>
+        android:layout_weight="0.5"/>
     <TextView
         android:id="@+id/instruction_step"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:textSize="30sp"
         android:layout_weight="0.5"
-        android:text="there world"/>
-
+        android:text="there world" />
 
 </LinearLayout>

@@ -184,7 +184,6 @@ public class LandingActivity extends AppCompatActivity
         public int getCount() {
             if (reading_type == "oximeter") {
                 return getResources().getStringArray(R.array.oximeter_instructions).length;
-
             }
             else if (reading_type == "weight"){
                 return getResources().getStringArray(R.array.weight_instructions).length;

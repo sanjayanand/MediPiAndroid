@@ -1,6 +1,7 @@
 package com.spinecore.hack.medipiandroid;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v7.widget.LinearLayoutManager;
 
@@ -38,35 +40,6 @@ public class InstructionFragment extends Fragment {
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
         LINEAR_LAYOUT_MANAGER
-    }
-
-    private static ArrayList<List<String>> oximeterInstructions;
-    static
-    {
-        oximeterInstructions = new ArrayList<List<String>>();
-        List<String> oximeterIndividualInstruction1 =
-                new ArrayList<String>(Arrays.asList("someImage1.jpg", "Instructions for the use of the Nonin 9560 Bluetooth Pulse Oximeter."));
-        List<String> oximeterIndividualInstruction2 =
-                new ArrayList<String>(Arrays.asList("someImage2.jpg", "1. Press start button on MediPi to commence reading."));
-        List<String> oximeterIndividualInstruction3 =
-                new ArrayList<String>(Arrays.asList("someImage3.jpg", "2. Insert finger into Nonin device with nail side up until the fingertip touches the built in stop guide. This switches on the device. For best results, keep device at your heart or chest level." ));
-        List<String> oximeterIndividualInstruction4 =
-                new ArrayList<String>(Arrays.asList("someImage4.jpg", "3. Wait until MediPi display shows the measurement has been taken. THIS MAY TAKE SOME TIME (about 30 seconds). The LED display on the Nonin device will flash and MediPi will indicate it is 'Downloading'"));
-        List<String> oximeterIndividualInstruction5 =
-                new ArrayList<String>(Arrays.asList("someImage5.jpg", "4. Remove your finger and press ‘next’/’back’ on MediPi."));
-        oximeterInstructions.add(oximeterIndividualInstruction1);
-        oximeterInstructions.add(oximeterIndividualInstruction2);
-        oximeterInstructions.add(oximeterIndividualInstruction3);
-        oximeterInstructions.add(oximeterIndividualInstruction4);
-        oximeterInstructions.add(oximeterIndividualInstruction5);
-    }
-
-
-    private static final HashMap<String,ArrayList<List<String>>> allInstructionMap;
-    static
-    {
-        allInstructionMap = new HashMap<String,ArrayList<List<String>>>();
-        allInstructionMap.put("oximeter", oximeterInstructions);
     }
 
     protected LayoutManagerType mCurrentLayoutManagerType;
@@ -104,31 +77,31 @@ public class InstructionFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_instructions, container, false);
         Bundle args = getArguments();
-        TextView textfieldImage = rootView.findViewById(R.id.instruction_image);
+        ImageView textfieldImage = rootView.findViewById(R.id.instruction_image);
         TextView textfieldInstruction = rootView.findViewById(R.id.instruction_step);
         if (args != null) {
             String readingType = args.getString(ARG_READING_TYPE);
             if (readingType == "oximeter") {
                 String[] instructions = getResources().getStringArray(R.array.oximeter_instructions);
                 String[] images = getResources().getStringArray(R.array.oximeter_instruction_images);
-                textfieldImage.setText(images[args.getInt(ARG_INSTRUCTION_STEP)]);
+                int resource = getResources().getIdentifier("com.spinecore.hack.medipiandroid:drawable/"+images[args.getInt(ARG_INSTRUCTION_STEP)], null, null);
+                textfieldImage.setImageResource(resource);
                 textfieldInstruction.setText(instructions[args.getInt(ARG_INSTRUCTION_STEP)]);
             }
             else if (readingType == "weight") {
                 String[] instructions = getResources().getStringArray(R.array.weight_instructions);
                 String[] images = getResources().getStringArray(R.array.weight_instruction_images);
-                textfieldImage.setText(images[args.getInt(ARG_INSTRUCTION_STEP)]);
+                int resource = getResources().getIdentifier("com.spinecore.hack.medipiandroid:drawable/"+images[args.getInt(ARG_INSTRUCTION_STEP)], null, null);
+                textfieldImage.setImageResource(resource);
                 textfieldInstruction.setText(instructions[args.getInt(ARG_INSTRUCTION_STEP)]);
             }
             else if (readingType == "bp") {
                 String[] instructions = getResources().getStringArray(R.array.bp_instructions);
                 String[] images = getResources().getStringArray(R.array.bp_instruction_images);
-                textfieldImage.setText(images[args.getInt(ARG_INSTRUCTION_STEP)]);
+                int resource = getResources().getIdentifier("com.spinecore.hack.medipiandroid:drawable/"+images[args.getInt(ARG_INSTRUCTION_STEP)], null, null);
+                textfieldImage.setImageResource(resource);
                 textfieldInstruction.setText(instructions[args.getInt(ARG_INSTRUCTION_STEP)]);
             }
-            //ArrayList<List<String>> instructions = allInstructionMap.get(args.getString(ARG_READING_TYPE));
-            System.out.println("Hello world");
-            //textfield.setText(Integer.toString(args.getInt(ARG_OBJECT)));
         }
 
         return rootView;

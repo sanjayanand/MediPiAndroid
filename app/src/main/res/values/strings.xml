@@ -28,7 +28,6 @@
 
     <!-- Strings related to Settings -->
 
-
     <string name="questionnaire_1">1. Are you feeling more breathless or coughing more than usual today?</string>
     <string name="questionnaire_2">2. Increase your bronchodilator as advised by your key worker. Is your cough or breathlessness much worse than usual?</string>
     <string name="questionnaire_3">3. Has your cough or breathlessness  been worse for more than a day?</string>
@@ -46,11 +45,11 @@
     </string-array>
     
     <string-array name="oximeter_instruction_images">
-        <item>someimage1.png</item>
-        <item>someimage2.png</item>
-        <item>someimage3.png</item>
-        <item>someimage4.png</item>
-        <item>someimage5.png</item>
+        <item>nonin9560</item>
+        <item>startbutton</item>
+        <item>nonin9560_insert_finger</item>
+        <item>nonin9560_measuring_2</item>
+        <item>next</item>
 
     </string-array>
 
@@ -65,13 +64,13 @@
     </string-array>
 
     <string-array name="weight_instruction_images">
-        <item>someimage1.png</item>
-        <item>someimage2.png</item>
-        <item>someimage3.png</item>
-        <item>someimage4.png</item>
-        <item>someimage5.png</item>
-        <item>someimage6.png</item>
-        <item>someimage7.png</item>
+        <item>m430</item>
+        <item>startbutton</item>
+        <item>marsden_turn_on_scales</item>
+        <item>marsden_turn_stand_on_scales</item>
+        <item>marsden_scales_beep</item>
+        <item>next</item>
+        <item>marsden_turn_off</item>
     </string-array>
 
     <string-array name="bp_instructions">
@@ -87,15 +86,15 @@
     </string-array>
 
     <string-array name="bp_instruction_images">
-        <item>someimage1.png</item>
-        <item>someimage2.png</item>
-        <item>someimage3.png</item>
-        <item>someimage4.png</item>
-        <item>someimage5.png</item>
-        <item>someimage6.png</item>
-        <item>someimage7.png</item>
-        <item>someimage8.png</item>
-        <item>someimage9.png</item>
+        <item>omron_708_bt_sitting</item>
+        <item>omron_slider</item>
+        <item>taking_blood_pressure</item>
+        <item>omron_io</item>
+        <item>omron_screen</item>
+        <item>startbutton</item>
+        <item>omron_upload</item>
+        <item>omron_result</item>
+        <item>next</item>
     </string-array>
 
     <string name="element_text">Element</string>
