@@ -81,12 +81,9 @@ public class ReadingFragment extends Fragment {
     private void initDataset() {
         Context ctx = getActivity();
         mDataset = new ArrayList<MediPiReading>();
-        mDataset.add(new MediPiReading("Blood Pressure", Float.toString(
-                MediPiStorageUtils.getFloatPreference(ctx,MediPiStorageUtils.BP_READING,120))));
-        mDataset.add(new MediPiReading("Oximeter", Float.toString(
-                MediPiStorageUtils.getFloatPreference(ctx,MediPiStorageUtils.OX_READING,99))));
-        mDataset.add(new MediPiReading("Weight", Float.toString(
-                MediPiStorageUtils.getFloatPreference(ctx,MediPiStorageUtils.WEIGHT_READING,70))));
+        mDataset.add(new MediPiReading("Blood Pressure", MediPiStorageUtils.getReading(ctx,MediPiStorageUtils.BP_READING,"120")));
+        mDataset.add(new MediPiReading("Oximeter", MediPiStorageUtils.getReading(ctx,MediPiStorageUtils.OX_READING,"99")));
+        mDataset.add(new MediPiReading("Weight", MediPiStorageUtils.getReading(ctx,MediPiStorageUtils.WEIGHT_READING,"70")));
     }
 
 }
